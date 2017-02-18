@@ -11,8 +11,17 @@ class App extends Component {
         { id: 2, name: 'Use ForcePower', isComplete: false },
         { id: 3, name: 'Delete Jar Jar Binks', isComplete: false },
       ],
+      currentTodo: '',
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  handleInputChange(evt) {
+    this.setState({
+      currentTodo: evt.target.value,
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -22,13 +31,13 @@ class App extends Component {
         </div>
         <div className="Todo-app">
           <form>
-            <input type="text" />
+            <input type="text" onChange={this.handleInputChange} value={this.state.currentTodo} />
             <div className="Todo-list">
               <ul>
                 {
                   this.state.todos.map(todo =>
                     <li key={todo.id}>
-                      <input type="checkbox" defaultChecked={todo.isComplete}/> { todo.name }
+                      <input type="checkbox" defaultChecked={todo.isComplete} /> { todo.name }
                     </li>)
                 }
               </ul>
