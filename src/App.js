@@ -8,21 +8,23 @@ import { addTodo, generateId, findById,
         toggleTodo, updateTodo, removeTodo,
         filterTodos } from './lib/todoHelpers';
 import { pipe, partial } from './lib/utils';
+import { loadTodos } from './lib/todoService';
 
 
 class App extends Component {
   state = {
-    todos: [
-      { id: 1, name: 'Buy Lightsaber', isComplete: true },
-      { id: 2, name: 'Use ForcePower', isComplete: false },
-      { id: 3, name: 'Delete Jar Jar Binks', isComplete: false },
-    ],
+    todos: [],
     currentTodo: '',
     errorMessage: '',
   };
 
   static contextTypes = {
     route: React.PropTypes.string,
+  }
+
+  componentDidMount() {
+    loadTodos()
+      .then(todos => this.setState({todos}));
   }
 
   handleRemove = (id, evt) => {
