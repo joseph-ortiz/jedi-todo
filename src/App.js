@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { TodoForm } from './components/todo/TodoForm';
 import { TodoList } from './components/todo/TodoList';
+import { Footer } from './components/todo/Footer';
 import { addTodo, generateId, findById,
         toggleTodo, updateTodo, removeTodo } from './lib/todoHelpers';
 import { pipe, partial } from './lib/utils';
@@ -70,11 +71,12 @@ class App extends Component {
             currentTodo={this.state.currentTodo}
             handleSubmit={submitHandler}
           />
-        <TodoList
-          todos={this.state.todos}
-          handleToggle={this.handleToggle}
-          handleRemove={this.handleRemove}
-        />
+          <TodoList
+            todos={this.state.todos}
+            handleToggle={this.handleToggle}
+            handleRemove={this.handleRemove}
+          />
+          <Footer />
         </div>
       </div>
     );
