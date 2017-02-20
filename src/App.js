@@ -16,9 +16,11 @@ class App extends Component {
         { id: 3, name: 'Delete Jar Jar Binks', isComplete: false },
       ],
       currentTodo: '',
+      errorMessage: '',
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEmptySubmit = this.handleEmptySubmit.bind(this);
   }
 
   handleInputChange(evt) {
@@ -38,7 +40,15 @@ class App extends Component {
     });
   }
 
+  handleEmptySubmit(evt) {
+    evt.preventDefault();
+    this.setState({
+      errorMessage: 'Please supply a todo name',
+    });
+  }
+
   render() {
+    const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit;
     return (
       <div className="App">
         <div className="App-header">
@@ -46,10 +56,11 @@ class App extends Component {
           <h2>Jedi Todo List</h2>
         </div>
         <div className="Todo-app">
+          {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
           <TodoForm
             handleInputChange={this.handleInputChange}
             currentTodo={this.state.currentTodo}
-            handleSubmit={this.handleSubmit}
+            handleSubmit={submitHandler}
           />
           <TodoList todos={this.state.todos} />
         </div>
