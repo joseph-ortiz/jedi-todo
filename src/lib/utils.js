@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: ["error", { "allow": ["_pipe"] }] */
 export const partial = (fn, ...args) => fn.bind(null, ...args);
 
 const _pipe = (f, g) => (...args) => g(f(...args));

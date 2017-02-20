@@ -30,7 +30,7 @@ test('pipe passes the results of dbl to inc', () => {
   expect(result).toBe(5);
 });
 
-test('pipe worsk with more than 2 functions', () => {
+test('pipe works with more than 2 functions', () => {
   const pipeline = pipe(add, inc, dbl, inc);
   const result = pipeline(1, 2);
   expect(result).toBe(9);

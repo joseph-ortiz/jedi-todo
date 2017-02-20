@@ -4,7 +4,7 @@ import './App.css';
 import { TodoForm } from './components/todo/TodoForm';
 import { TodoList } from './components/todo/TodoList';
 import { addTodo, generateId, findById,
-        toggleTodo, updateTodo } from './lib/todoHelpers';
+        toggleTodo, updateTodo, removeTodo } from './lib/todoHelpers';
 import { pipe, partial } from './lib/utils';
 
 
@@ -18,6 +18,12 @@ class App extends Component {
     currentTodo: '',
     errorMessage: '',
   };
+
+  handleRemove = (id, evt) => {
+    evt.preventDefault();
+    const updatedTodos = removeTodo(this.state.todos, id);
+    this.setState({ todos: updatedTodos });
+  }
 
   handleToggle = (id) => {
     const getUpdatedTodos = pipe(findById, toggleTodo, partial(updateTodo, this.state.todos));
@@ -64,7 +70,11 @@ class App extends Component {
             currentTodo={this.state.currentTodo}
             handleSubmit={submitHandler}
           />
-        <TodoList todos={this.state.todos} handleToggle={this.handleToggle}/>
+        <TodoList
+          todos={this.state.todos}
+          handleToggle={this.handleToggle}
+          handleRemove={this.handleRemove}
+        />
         </div>
       </div>
     );
