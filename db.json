@@ -8,12 +8,12 @@
     {
       "id": 2,
       "name": "Use the Force",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 3,
       "name": "Delete Jar Jar Binks",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 4,
