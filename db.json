@@ -1,10 +1,39 @@
 {
   "todos": [
-    { "id": 1, "name": "Buy Lightsaber", "isComplete": true },
-    { "id": 2, "name": "Use the Force", "isComplete": false },
-    { "id": 3, "name": "Delete Jar Jar Binks", "isComplete": false },
-    { "id": 4, "name": "Destroy Death Star", "isComplete": false },
-    { "id": 5, "name": "Do a barrel roll!", "isComplete": false },
-    { "id": 6, "name": "Win at life", "isComplete": false }
+    {
+      "id": 1,
+      "name": "Buy Lightsaber",
+      "isComplete": true
+    },
+    {
+      "id": 2,
+      "name": "Use the Force",
+      "isComplete": false
+    },
+    {
+      "id": 3,
+      "name": "Delete Jar Jar Binks",
+      "isComplete": false
+    },
+    {
+      "id": 4,
+      "name": "Destroy Death Star",
+      "isComplete": false
+    },
+    {
+      "id": 5,
+      "name": "Do a barrel roll!",
+      "isComplete": false
+    },
+    {
+      "id": 6,
+      "name": "Win at life",
+      "isComplete": false
+    },
+    {
+      "id": 529,
+      "name": "eat burger",
+      "isComplete": false
+    }
   ]
 }
