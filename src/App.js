@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { TodoForm } from './components/todo/TodoForm';
 import { TodoList } from './components/todo/TodoList';
-import { addTodo, generateId } from './lib/todoHelpers';
+import { addTodo, generateId, findById, toggleTodo, updateTodo } from './lib/todoHelpers';
 
 
 class App extends Component {
@@ -16,6 +16,13 @@ class App extends Component {
     currentTodo: '',
     errorMessage: '',
   };
+
+  handleToggle = (id) => {
+    const todo = findById(id, this.state.todos);
+    const toggled = toggleTodo(todo);
+    const updatedTodos = updateTodo(this.state.todos, toggled);
+    this.setState({ todos: updatedTodos });
+  }
 
   handleInputChange = (evt) => {
     this.setState({
@@ -56,7 +63,7 @@ class App extends Component {
             currentTodo={this.state.currentTodo}
             handleSubmit={submitHandler}
           />
-          <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} handleToggle={this.handleToggle}/>
         </div>
       </div>
     );
