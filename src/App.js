@@ -5,7 +5,8 @@ import { TodoForm } from './components/todo/TodoForm';
 import { TodoList } from './components/todo/TodoList';
 import { Footer } from './components/todo/Footer';
 import { addTodo, generateId, findById,
-        toggleTodo, updateTodo, removeTodo } from './lib/todoHelpers';
+        toggleTodo, updateTodo, removeTodo,
+        filterTodos } from './lib/todoHelpers';
 import { pipe, partial } from './lib/utils';
 
 
@@ -19,6 +20,10 @@ class App extends Component {
     currentTodo: '',
     errorMessage: '',
   };
+
+  static contextTypes = {
+    route: React.PropTypes.string,
+  }
 
   handleRemove = (id, evt) => {
     evt.preventDefault();
@@ -58,6 +63,7 @@ class App extends Component {
 
   render() {
     const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit;
+    const displayTodos = filterTodos(this.state.todos, this.context.route);
     return (
       <div className="App">
         <div className="App-header">
@@ -72,7 +78,7 @@ class App extends Component {
             handleSubmit={submitHandler}
           />
           <TodoList
-            todos={this.state.todos}
+            todos={displayTodos}
             handleToggle={this.handleToggle}
             handleRemove={this.handleRemove}
           />

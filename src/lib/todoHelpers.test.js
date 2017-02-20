@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import { addTodo, findById, toggleTodo,
-  updateTodo, removeTodo } from './todoHelpers';
+  updateTodo, removeTodo, filterTodos } from './todoHelpers';
 
 test('addTodo should add the passed todo in the list', () => {
   const startTodos = [
@@ -114,4 +114,41 @@ test('removeTodo should not mutate the original array', () => {
   ];
   const result = removeTodo(startTodos, targetId);
   expect(result).not.toBe(expectedTodos);
+});
+
+test('filterTodos should return all items for the root route', () => {
+  const startTodos = [
+    { id: 1, name: 'one', isComplete: false },
+    { id: 2, name: 'two', isComplete: false },
+    { id: 3, name: 'three', isComplete: false },
+  ];
+  const result = filterTodos(startTodos, '/');
+  expect(result).toEqual(startTodos);
+});
+
+test('filterTodos should return all items for the complete route', () => {
+  const startTodos = [
+    { id: 1, name: 'one', isComplete: true },
+    { id: 2, name: 'two', isComplete: false },
+    { id: 3, name: 'three', isComplete: false },
+  ];
+  const expectedTodos = [
+    { id: 1, name: 'one', isComplete: true },
+  ];
+  const result = filterTodos(startTodos, '/complete');
+  expect(result).toEqual(expectedTodos);
+});
+
+test('filterTodos should return only items for the active route', () => {
+  const startTodos = [
+    { id: 1, name: 'one', isComplete: true },
+    { id: 2, name: 'two', isComplete: false },
+    { id: 3, name: 'three', isComplete: false },
+  ];
+  const expectedTodos = [
+    { id: 2, name: 'two', isComplete: false },
+    { id: 3, name: 'three', isComplete: false },
+  ];
+  const result = filterTodos(startTodos, '/active');
+  expect(result).toEqual(expectedTodos);
 });
