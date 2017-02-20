@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import { addTodo, findById, toggleTodo, updateTodo } from './todoHelpers';
 
 test('addTodo should add the passed todo in the list', () => {
@@ -82,4 +83,4 @@ test('updateTodo should not mutate the original array', () => {
   const result = updateTodo(startTodos, updatedTodo);
 
   expect(result).not.toBe(startTodos);
-})
+});

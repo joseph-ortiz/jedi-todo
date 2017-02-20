@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import { partial, pipe } from './utils';
 
 const add = (a, b) => a + b;

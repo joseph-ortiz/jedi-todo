@@ -15,4 +15,5 @@ export const TodoList = props => (
 
 TodoList.propTypes = {
   todos: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  handleToggle: React.PropTypes.func.isRequired,
 };

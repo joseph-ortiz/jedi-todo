@@ -18,10 +18,9 @@ TodoItem.propTypes = {
   name: React.PropTypes.string.isRequired,
   isComplete: React.PropTypes.bool,
   id: React.PropTypes.number.isRequired,
-  handleToggle: React.PropTypes.func,
+  handleToggle: React.PropTypes.func.isRequired,
 };
 
 TodoItem.defaultProps = {
   isComplete: false,
-  handleToggle: () => { console.log('default handleToggle'); },
 };

@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import { TodoForm } from './components/todo/TodoForm';
 import { TodoList } from './components/todo/TodoList';
-import { addTodo, generateId, findById, toggleTodo, updateTodo } from './lib/todoHelpers';
+import { addTodo, generateId, findById,
+        toggleTodo, updateTodo } from './lib/todoHelpers';
 import { pipe, partial } from './lib/utils';
 
 
